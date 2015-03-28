@@ -1,0 +1,26 @@
+{
+  "name": "react-loose-forms.examples",
+  "version": "0.0.0",
+  "main": "src/app.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/espeakers/react-loose-forms.examples.git"
+  },
+  "author": "espeakers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/espeakers/react-loose-forms.examples/issues"
+  },
+  "homepage": "https://github.com/espeakers/react-loose-forms.examples",
+  "dependencies": {
+    "react": "^0.13.1",
+    "react-loose-forms": "0.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.3"
+  },
+  "scripts": {
+    "build": "browserify src/app.js > www/main.js"
+  }
+}
