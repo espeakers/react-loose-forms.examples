@@ -15,15 +15,16 @@
   "homepage": "https://github.com/espeakers/react-loose-forms.examples",
   "dependencies": {
     "react": "^0.13.3",
+    "react-dd": "0.0.1",
     "react-loose-forms": "0.0.0"
   },
   "devDependencies": {
+    "browserify-css": "^0.6.1",
     "scriptsp": "^0.3.0",
     "watchify": "^3.3.0"
   },
   "scripts": {
     "start": "scriptsp login",
-
-    "login": "watchify login/index.js -o login/bundle.js -vd"
+    "login": "watchify -t browserify-css login/index.js -o login/bundle.js -vd"
   }
 }
