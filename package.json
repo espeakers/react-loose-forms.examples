@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/espeakers/react-loose-forms.examples",
   "dependencies": {
+    "lodash": "^3.10.0",
     "react": "^0.13.3",
     "react-dd": "0.0.1",
     "react-loose-forms": "1.0.1",
@@ -25,10 +26,10 @@
     "watchify": "^3.3.0"
   },
   "scripts": {
-    "start": "scriptsp login0 login1 login2",
-
+    "start": "scriptsp login0 login1 login2 bug-ticket-editor0",
     "login0": "watchify -t browserify-css login0/index.js -o login0/bundle.js -vd",
     "login1": "watchify -t browserify-css login1/index.js -o login1/bundle.js -vd",
-    "login2": "watchify -t browserify-css login2/index.js -o login2/bundle.js -vd"
+    "login2": "watchify -t browserify-css login2/index.js -o login2/bundle.js -vd",
+    "bug-ticket-editor0": "watchify -t browserify-css bug-ticket-editor0/index.js -o bug-ticket-editor0/bundle.js -vd"
   }
 }
