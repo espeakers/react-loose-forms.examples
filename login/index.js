@@ -1,5 +1,8 @@
 var dd = require("react-dd");
 var React = require("react");
+require("../bootstrap.min.css");
+require("react-loose-forms.bootstrap3").install();
+
 var LoginForm = require("./LoginForm");
 
 var App = dd.createClass({
@@ -14,5 +17,4 @@ var App = dd.createClass({
   }
 });
 
-require("../bootstrap.min.css");
 React.render(App(), document.body);

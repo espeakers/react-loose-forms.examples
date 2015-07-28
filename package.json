@@ -16,7 +16,8 @@
   "dependencies": {
     "react": "^0.13.3",
     "react-dd": "0.0.1",
-    "react-loose-forms": "0.0.0"
+    "react-loose-forms": "0.0.2",
+    "react-loose-forms.bootstrap3": "0.0.3"
   },
   "devDependencies": {
     "browserify-css": "^0.6.1",
