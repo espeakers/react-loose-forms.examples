@@ -1,5 +1,14 @@
 # react-loose-forms.examples
 
+Each subdirectory is an example. Simply open it's index.html file to watch it in action.
+
+To make changes, simply run this:
+```sh
+$ npm i
+$ npm start
+```
+This will watch the js files and rebuild as you save changes.
+
 # License
 
 The MIT License (MIT)
