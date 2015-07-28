@@ -4,10 +4,6 @@ var VerticalFields = require("react-loose-forms.bootstrap3/layouts/VerticalField
 
 module.exports = dd.createClass({
   mixins: [FormMixin],
-  getInitialValuesSourceVersion: function(props){
-    var ticket = props.ticket;
-    return ticket.id + "@" + ticket.date;
-  },
   getInitialValues: function(props){
     var ticket = props.ticket;
     return {
@@ -17,9 +13,7 @@ module.exports = dd.createClass({
     };
   },
   buildSchema: function(){
-    var data = this.state.data;
-
-    var schema = {
+    return {
       product: {
         label: "Product",
         type: "text"
@@ -38,29 +32,6 @@ module.exports = dd.createClass({
         }
       }
     };
-
-    if(data.level === "High"){
-      schema.did_you_send_flowers = {
-        label: "Did you send flowers?",
-        type: "select",
-        options: {
-          yes: "Yes",
-          no: "No"
-        }
-      };
-    }
-    if(data.did_you_send_flowers === "no"){
-      schema.why_no_flowers = {
-        label: "Why didn't you send flowers?",
-        type: "textarea"
-      };
-    }
-
-    return schema;
-  },
-  __reset: function(e){
-    e.preventDefault();
-    this.Form_reset();
   },
   render: function(){
     var where_changes_made = this.Form_areChangesMade();
@@ -74,8 +45,7 @@ module.exports = dd.createClass({
       }),
 
       VerticalFields.FormButtons({
-        submit_btn_text: "Save",
-        onDiscard: where_changes_made ? this.__reset : null
+        submit_btn_text: "Save"
       })
     );
   }
