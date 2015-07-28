@@ -11,11 +11,11 @@ var App = dd.createClass({
     return {
       opened_ticket_id: null,
       tickets: _.object(_.map([
-        {product: "Dehydrated Boulders", subject: "When I opened your box, they fell into my glass of water... as a result I broke both my legs :(", date: "2015 Jul 27", level: "High"},
-        {product: "Jet-Propelled Unicycle", subject: "The jet's were installed backwards!", date: "2015 Jul 28", level: "High"},
-        {product: "DIY Tornado Kit", subject: "I planted 10 tornado seeds in my neighbors yard, but 3 of them attacked my house!", date: "2015 Jul 26", level: "Medium"},
-        {product: "Earthquake Pills", subject: "I ate them, but it didn't do anything!?!?", date: "2015 Jul 25", level: "Low"},
-        {product: "Iron Carrot", subject: "I chipped my tooth!", date: "2015 Jul 25", level: "Low"}
+        {product: "Dehydrated Boulders", description: "When I opened your box, they fell into my glass of water... as a result I broke both my legs :(", date: "2015 Jul 27", level: "High"},
+        {product: "Jet-Propelled Unicycle", description: "The jet's were installed backwards!", date: "2015 Jul 28", level: "High"},
+        {product: "DIY Tornado Kit", description: "I planted 10 tornado seeds in my neighbors yard, but 3 of them attacked my house!", date: "2015 Jul 26", level: "Medium"},
+        {product: "Earthquake Pills", description: "I ate them, but it didn't do anything!?!?", date: "2015 Jul 25", level: "Low"},
+        {product: "Iron Carrot", description: "I chipped my tooth!", date: "2015 Jul 25", level: "Low"}
       ], function(t, i){
         var t2 = _.assign({id: "111" + i}, t);
         return [t2.id, t2];
@@ -23,9 +23,21 @@ var App = dd.createClass({
     };
   },
   __saveTicket: function(data){
+    console.log(JSON.stringify(data, false, 2));
 
-    console.log("TODO save", JSON.stringify(data, false, 2));
+    var opened_ticket_id = this.state.opened_ticket_id;
+    var opened_ticket = this.state.tickets[opened_ticket_id];
 
+    if(opened_ticket){
+      this.setState({tickets: _.assign(this.state.tickets, _.object([
+        [opened_ticket_id, _.assign(opened_ticket, data)]
+      ]))});
+    }else{
+      var new_id = _.uniqueId("new");
+      this.setState({tickets: _.assign(this.state.tickets, _.object([
+        [new_id, _.assign(data, {id: new_id, date: "today"})]
+      ]))});
+    }
   },
   __openTicketOnClick: function(id){
     var self = this;
@@ -51,7 +63,7 @@ var App = dd.createClass({
               dd.tr(null,
                 dd.th(null, "Date"),
                 dd.th(null, "Product"),
-                dd.th(null, "Subject"),
+                dd.th(null, "Description"),
                 dd.th(null, "Level")
               )
             ),
@@ -61,7 +73,7 @@ var App = dd.createClass({
                 return dd.tr({key: id, onClick: this.__openTicketOnClick(id), className: is_open ? "active" : null},
                   dd.td(null, dd[is_open ? "b" : "span"](null, ticket.date)),
                   dd.td(null, dd[is_open ? "b" : "span"](null, ticket.product)),
-                  dd.td(null, dd[is_open ? "b" : "span"](null, ticket.subject)),
+                  dd.td(null, dd[is_open ? "b" : "span"](null, ticket.description)),
                   dd.td(null, dd[is_open ? "b" : "span"](null, ticket.level))
                 );
               }, this)
