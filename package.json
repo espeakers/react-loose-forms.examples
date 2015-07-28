@@ -25,7 +25,10 @@
     "watchify": "^3.3.0"
   },
   "scripts": {
-    "start": "scriptsp login",
-    "login": "watchify -t browserify-css login/index.js -o login/bundle.js -vd"
+    "start": "scriptsp login0 login1 login2",
+
+    "login0": "watchify -t browserify-css login0/index.js -o login0/bundle.js -vd",
+    "login1": "watchify -t browserify-css login1/index.js -o login1/bundle.js -vd",
+    "login2": "watchify -t browserify-css login2/index.js -o login2/bundle.js -vd"
   }
 }
